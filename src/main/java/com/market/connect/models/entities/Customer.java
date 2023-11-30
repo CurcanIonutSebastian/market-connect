@@ -1,6 +1,7 @@
 package com.market.connect.models.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -15,16 +16,20 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotBlank
     @Column(name = "first_name")
     private String firstName;
+    @NotBlank
     @Column(name = "last_name")
+    @NotBlank
     private String lastName;
-    @Column(name = "email")
+    @Column(name = "email", unique = true)
     private String email;
     @Column(name = "birthday")
     private LocalDate birthday;
     @Column(name = "created_at")
     private LocalDateTime createdAt;
+    @NotBlank
     @Column(name = "address")
     private String address;
 
